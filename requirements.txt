@@ -1,0 +1,9 @@
+anthropic>=1.8,<2
+fastapi>=0.141
+uvicorn[standard]>=0.53
+python-multipart>=0.0.32
+pydantic>=2.13
+av>=18.1
+numpy>=2.5
+pillow>=12.3
+faster-whisper>=1.2
