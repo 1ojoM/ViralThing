@@ -278,7 +278,7 @@ function renderPack(p) {
         <strong>Клип ${i + 1} · ${esc(c.role)}</strong>
         <span class="badge">Kling: ${c.duration} с</span>
         <span class="badge">оставить ${c.trim_to.toFixed(1)} с</span>
-        <span class="badge ${n > 40 ? "warn" : ""}">${n} слов</span>
+        <span class="badge ${n > 35 ? "warn" : ""}">${n} слов</span>
       </div>
       <div class="prompt"><div>${esc(c.prompt)}</div><button class="ghost small" data-clip="${i}">Копировать</button></div>
       <div class="ru">${esc(c.prompt_ru)}</div>

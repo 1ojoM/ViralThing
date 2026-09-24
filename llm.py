@@ -7,8 +7,10 @@ from typing import Literal
 import anthropic
 from pydantic import BaseModel, Field
 
+import claude_cli
 from video import Scene, b64
 
+BACKEND = os.environ.get("REMIX_BACKEND", "api")  # api | subscription
 MODEL = os.environ.get("REMIX_MODEL", "claude-opus-5")
 EFFORT = os.environ.get("REMIX_EFFORT", "high")
 
@@ -79,7 +81,7 @@ KLING_SYSTEM = """Ты пишешь промпты для генерации в�
 
 Правила промпта для Kling — самое важное. Kling лучше всего следует коротким простым промптам, поэтому:
 1. Один клип = один план = одно главное действие. Никаких «then», «after that», смен сцены внутри клипа.
-2. Формула: [герой] + [действие] + [место] + [камера] + [свет/стиль]. 1–2 предложения, 15–40 слов.
+2. Формула: [герой] + [действие] + [место] + [камера] + [свет/стиль]. 1–2 предложения, обычно 20–30 слов, строго не больше 35. Лучше выкинуть второстепенную деталь, чем превысить лимит.
 3. Только конкретные видимые вещи: существительные и глаголы, которые можно снять. Без метафор, эмоций-абстракций и оценок.
 4. Запрещены слова-пустышки: viral, stunning, masterpiece, 8k, 4k, ultra detailed, hyperrealistic, award-winning, trending, best quality.
 5. Не больше одного движения камеры на клип, простыми терминами: static shot, slow push in, pull back, pan left/right, tracking shot, orbit around, handheld, low angle, top-down view, close-up, wide shot.
@@ -97,6 +99,8 @@ KLING_SYSTEM = """Ты пишешь промпты для генерации в�
 # ---------- Вызовы ----------
 
 def _call(system: str, content: list, schema: type[BaseModel]):
+    if BACKEND == "subscription":
+        return claude_cli.call(system, content, schema, EFFORT)
     response = client().beta.messages.parse(
         model=MODEL,
         max_tokens=16000,
