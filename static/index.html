@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Viral Remix</title>
+<title>ViralThing</title>
 <style>
   :root {
     --bg: #f6f5f2; --card: #ffffff; --text: #1b1b1f; --muted: #6b6b76; --line: #e4e2dc;
@@ -88,7 +88,7 @@
 <body>
 <main>
   <header>
-    <h1>Viral<span>Remix</span></h1>
+    <h1>Viral<span>Thing</span></h1>
     <p>Загрузите вирусное видео → получите его формулу → промпты для Kling на вашу тему</p>
   </header>
 
@@ -307,7 +307,7 @@ $("copyAll").onclick = e => {
 $("downloadJson").onclick = () => {
   const blob = new Blob([JSON.stringify({ formula: analysis.formula, prompts: pack }, null, 2)], { type: "application/json" });
   const a = document.createElement("a");
-  a.href = URL.createObjectURL(blob); a.download = "viral-remix.json"; a.click();
+  a.href = URL.createObjectURL(blob); a.download = "viralthing.json"; a.click();
 };
 </script>
 </body>

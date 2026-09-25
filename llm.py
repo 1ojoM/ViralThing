@@ -10,9 +10,9 @@ from pydantic import BaseModel, Field
 import claude_cli
 from video import Scene, b64
 
-BACKEND = os.environ.get("REMIX_BACKEND", "api")  # api | subscription
-MODEL = os.environ.get("REMIX_MODEL", "claude-opus-5")
-EFFORT = os.environ.get("REMIX_EFFORT", "high")
+BACKEND = os.environ.get("VIRALTHING_BACKEND", "api")  # api | subscription
+MODEL = os.environ.get("VIRALTHING_MODEL", "claude-opus-5")
+EFFORT = os.environ.get("VIRALTHING_EFFORT", "high")
 
 _client = None
 

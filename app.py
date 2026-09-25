@@ -1,4 +1,4 @@
-"""Viral Remix — веб-сервер прототипа.
+"""ViralThing — веб-сервер прототипа.
 
 Запуск: .venv/bin/uvicorn app:app --port 8000
 """
@@ -27,12 +27,12 @@ def _load_env():
 
 _load_env()
 
-import llm  # noqa: E402  (после загрузки .env — модуль читает REMIX_MODEL)
+import llm  # noqa: E402  (после загрузки .env — модуль читает VIRALTHING_MODEL)
 import video  # noqa: E402
 
 MAX_UPLOAD = 200 * 1024 * 1024
 
-app = FastAPI(title="Viral Remix")
+app = FastAPI(title="ViralThing")
 
 
 def _api_error(e: Exception) -> HTTPException:
@@ -58,7 +58,7 @@ def index():
 
 @app.post("/api/analyze")
 def analyze(file: UploadFile = File(...), speech: bool = Form(True)):
-    tmpdir = tempfile.mkdtemp(prefix="remix_")
+    tmpdir = tempfile.mkdtemp(prefix="viralthing_")
     try:
         path = os.path.join(tmpdir, "input" + Path(file.filename or "v.mp4").suffix)
         size = 0

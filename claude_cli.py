@@ -19,7 +19,7 @@ TIMEOUT = 600  # сек на один запрос
 
 def _binary() -> str:
     path = (
-        os.environ.get("REMIX_CLAUDE_BIN")
+        os.environ.get("VIRALTHING_CLAUDE_BIN")
         or shutil.which("claude")
         or str(Path.home() / ".local/bin/claude")
     )
@@ -52,11 +52,11 @@ def call(system: str, content: list, schema: type[BaseModel], effort: str) -> Ba
         "--no-session-persistence",
         "--effort", effort,
     ]
-    if model := os.environ.get("REMIX_CLI_MODEL"):
+    if model := os.environ.get("VIRALTHING_CLI_MODEL"):
         cmd += ["--model", model]
 
     message = {"type": "user", "message": {"role": "user", "content": content}}
-    with tempfile.TemporaryDirectory(prefix="remix_cli_") as cwd:
+    with tempfile.TemporaryDirectory(prefix="viralthing_cli_") as cwd:
         try:
             proc = subprocess.run(
                 cmd, input=json.dumps(message, ensure_ascii=False) + "\n",

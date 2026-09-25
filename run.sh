@@ -1,5 +1,5 @@
 #!/bin/sh
-# Установка (один раз) и запуск Viral Remix на http://localhost:8000
+# Установка (один раз) и запуск ViralThing на http://localhost:8000
 cd "$(dirname "$0")"
 if [ ! -d .venv ]; then
   python3 -m venv .venv && .venv/bin/pip install -r requirements.txt || exit 1

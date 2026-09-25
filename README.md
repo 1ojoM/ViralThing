@@ -1,15 +1,15 @@
-# Viral-Thing
+# ViralThing
 creates prompts based on uploaded videos
 
-## Viral Remix: прототип
+## Прототип
 
 Загружаете вирусное видео, получаете его «формулу» (хук, структура, темп, камера, стиль)
 и набор коротких промптов для Kling на вашу тему по той же формуле.
 
 ## Запуск
 1. Откройте `.env` (создаётся из `.env.example` при первом запуске) и выберите, откуда брать Claude:
-   - **API** (`REMIX_BACKEND=api`): вставьте `ANTHROPIC_API_KEY`. Подходит, если приложением будут пользоваться другие люди.
-   - **Подписка Pro/Max** (`REMIX_BACKEND=subscription`): установите Claude Code CLI
+   - **API** (`VIRALTHING_BACKEND=api`): вставьте `ANTHROPIC_API_KEY`. Подходит, если приложением будут пользоваться другие люди.
+   - **Подписка Pro/Max** (`VIRALTHING_BACKEND=subscription`): установите Claude Code CLI
      (`curl -fsSL https://claude.ai/install.sh | bash`) и войдите: `claude auth login`.
      Только для личного использования, запросы тратят лимиты вашей подписки.
 2. `./run.sh` → http://localhost:8000
